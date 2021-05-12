@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   name:string;
   dob:any;
   loadingText:string;
+  loading:boolean;
 
   constructor(
     private apiService: ApiService
@@ -38,10 +39,13 @@ export class AppComponent implements OnInit {
     )
   }
 
-  getAllBetween(){ //data on DOB in 1965-1960 range
+  //data on DOB in 1965-1960 range,prevent multiple btn click until response received
+  getAllBetween(){ 
     this.loadingText = "";
+    this.loading = true;
     this.apiService.getAll().subscribe(
       response => {
+        this.loading = false;
         this.requestTime = new Date().getTime();
         this.patientData = response;
         this.patientEntry = this.patientData.entry;
@@ -51,14 +55,17 @@ export class AppComponent implements OnInit {
       }
     )
   }
-
-  patientList(n,d){ //data based on name and DOB input field
+  
+  //data based on name and DOB input field,prevent multiple btn click until response received
+  patientList(n,d){ 
     this.loadingText = "";
     if(n!="" && d!=""){
+      this.loading = true;
       this.name = n;
       this.dob = d;
       this.apiService.patientListQuery(this.name,this.dob).subscribe(
         response => {
+          this.loading = false;
           this.requestTime = new Date().getTime();
           this.patientData = response;
           this.patientEntry = this.patientData.entry;
