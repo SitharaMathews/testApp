@@ -1,0 +1,81 @@
+$lightbg:#dee2e6;
+$primary: #ad1f2f;
+$secondary:#790713;
+$white: #fff;
+$disabled:#b7656e;
+
+.table{
+    width: 98%;
+    display: table;
+    margin: 1rem;
+    max-width: 100%;
+    background-color: transparent;
+    overflow: scroll;    
+    overflow-x: auto;
+    thead{
+        background-color: $primary;
+        color: $white;
+    }
+    th,td{
+        padding: .75rem;
+        border-top: 1px solid $lightbg;
+        text-align: inherit;
+    }
+}
+.footer{
+    height: 60px;
+    line-height: 60px;
+    bottom: 0;
+    padding: 1rem;
+    font-weight: 600;
+    background-color: $primary;
+    color: $white;
+}
+button{
+    background-color: $primary;
+    color: $white;
+    &:focus,&:hover,&:active{
+        background-color: $secondary;
+    }
+    &:disabled{
+        background-color: $disabled;
+    }
+}
+.btn{
+    display: inline-flex;
+    padding: 1rem;
+    margin: 1rem;
+}
+.inputItem{
+    padding: 1rem;
+}
+.queryContainer{
+    display: inline-flex;
+    right: 1rem;
+    position: absolute;
+    top: 1rem;
+}
+
+
+@media screen and (max-width: 768px){
+    .table{
+        width: 100%;
+        display: block;
+        margin: 0;
+    }
+    .inputItem{
+        margin: 1rem auto;
+    }
+    .queryContainer{
+        position: absolute;
+        right: 1rem;
+        top: inherit;
+    }
+    .searchContainer{
+        height: 210px;
+        .btn{
+            display: block;        
+        }
+    }
+ 
+}
