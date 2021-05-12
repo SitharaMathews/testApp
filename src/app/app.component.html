@@ -1,1 +1,33 @@
-<p>check the console!</p>
+<div class="searchContainer">
+<button class="btn" (click)="getAllBetween()">Get All between 1960 and 1965</button>
+<div class="queryContainer">
+    <input class="inputItem" type="text" #queryName placeholder="Enter Name" pattern="[A-Za-z]{3}">
+    <input class="inputItem" type="date" #queryDate placeholder="Enter DOB">
+    <button class="inputItem" (click)="patientList(queryName.value,queryDate.value)">Search</button>
+</div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th *ngFor = "let heading of headers">
+                {{heading}}
+            </th>            
+        </tr>
+    </thead>
+    <tr *ngFor = "let column of patientEntry">
+        <td>{{column.resource.id}}</td>
+        <td><span  *ngFor = "let familyName of column.resource.name;first as f"><span *ngIf=f>{{familyName.family}}</span></span></td>
+        <td><span  *ngFor = "let givenName of column.resource.name;first as i"><span *ngIf=i>{{givenName.given}}</span></span></td>
+        <td>{{column.resource.gender}}</td>
+        <td>{{column.resource.resourceType}}</td>
+        <td>{{column.resource.birthDate}}</td>     
+    </tr>
+    <tr>
+        <td>{{loadingText}}</td>   
+    </tr>
+
+</table>
+<footer class="footer">
+    Request TIme: {{ requestTime | date:'mediumTime' }}
+</footer>
