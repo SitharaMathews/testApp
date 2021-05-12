@@ -1,8 +1,8 @@
 <div class="searchContainer">
 <button class="btn" [disabled]="loading" (click)="getAllBetween()">Get All between 1960 and 1965</button>
 <div class="queryContainer">
-    <input class="inputItem" type="text" #queryName placeholder="Enter Name" pattern="[A-Za-z]{3}">
-    <input class="inputItem" type="date" #queryDate placeholder="Enter DOB">
+    <input class="inputItem" type="text" #queryName placeholder="Enter Name" required pattern="[A-Za-z]{3}">
+    <input class="inputItem" type="date" #queryDate required placeholder="Enter DOB">
     <button class="inputItem" [disabled]="loading" (click)="patientList(queryName.value,queryDate.value)">Search</button>
 </div>
 </div>
